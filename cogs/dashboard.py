@@ -4,7 +4,7 @@ import json
 import os
 import datetime
 import settings
-from utils import get_days_remaining, EXAMS # 引入倒數
+from utils import get_days_remaining, EXAMS 
 
 class Dashboard(commands.Cog):
     def __init__(self, bot):
@@ -47,14 +47,22 @@ class Dashboard(commands.Cog):
 
         now_str = datetime.datetime.now(settings.TAIPEI_TZ).strftime("%m/%d %H:%M")
         today = datetime.datetime.now().strftime("%Y-%m-%d")
-        min_days = min([get_days_remaining(e['month'], e['day']) for e in EXAMS])
         
+        # 🔥 修改處：指定顯示台聯大倒數 (與 RPG 狀態同步)
+        target_exam = next((e for e in EXAMS if '台聯' in e['name']), None)
+        if target_exam:
+            days = get_days_remaining(target_exam['month'], target_exam['day'])
+            footer_text = f"距離 {target_exam['name']} 還有 {days} 天，大家加油！"
+        else:
+            min_days = min([get_days_remaining(e['month'], e['day']) for e in EXAMS])
+            footer_text = f"距離考試還有 {min_days} 天，大家加油！"
+
         embed = discord.Embed(
             title="📊 轉學考戰情室",
             description=f"最後更新：{now_str} (每 30 分鐘刷新)",
             color=0x2ecc71
         )
-        embed.set_footer(text=f"距離考試還有 {min_days} 天，大家加油！")
+        embed.set_footer(text=footer_text)
 
         for uid, u in sorted_users:
             # 檢查今日狀態
@@ -64,10 +72,6 @@ class Dashboard(commands.Cog):
             
             s = u['stats']
             
-            # 🔥 仿照截圖的排版
-            # 第一行：等級 | 職業
-            # 第二行：屬性 (簡潔版)
-            # 第三行：今日修練狀態
             value_text = (
                 f"**Lv.{u['level']}** | {u['job']}\n"
                 f"`💪{s['str']} 🧠{s['int']} 🍀{s['luk']} ❤️{s['vit']}`\n"
