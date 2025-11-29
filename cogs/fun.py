@@ -9,12 +9,10 @@ import aiohttp
 from settings import *
 
 # ==========================================
-# ⚔️ 技能資料庫 (擴充版)
+# ⚔️ 技能資料庫
 # ==========================================
-# mult: 傷害倍率
-# is_ohko: 是否有機率秒殺 (英文大師專屬)
 SKILL_DB = {
-    # --- 📐 微積分大師 (智力流 - 高爆發) ---
+    # --- 📐 微積分大師 (智力流) ---
     "微積分大師": [
         {"name": "極限運算", "req_lv": 1, "factor": "int", "mult": 1.2, "desc": "快速計算出了極限值！"},
         {"name": "連續性檢查", "req_lv": 5, "factor": "int", "mult": 1.5, "desc": "確認了函式的連續性，發動攻擊！"},
@@ -27,7 +25,7 @@ SKILL_DB = {
         {"name": "傅立葉變換", "req_lv": 40, "factor": "int", "mult": 4.8, "desc": "將對手轉換到頻域並粉碎！"},
         {"name": "納維-斯托克斯", "req_lv": 50, "factor": "int", "mult": 6.0, "desc": "用千禧年難題的混沌亂流吞沒對手！"}
     ],
-    # --- 🍎 物理大師 (力量流 - 穩重痛) ---
+    # --- 🍎 物理大師 (力量流) ---
     "物理大師": [
         {"name": "自由落體", "req_lv": 1, "factor": "str", "mult": 1.2, "desc": "從高處丟下鐵球！"},
         {"name": "摩擦力生熱", "req_lv": 5, "factor": "str", "mult": 1.5, "desc": "高速摩擦造成燒傷！"},
@@ -40,21 +38,20 @@ SKILL_DB = {
         {"name": "相對論重拳", "req_lv": 40, "factor": "str", "mult": 4.8, "desc": "接近光速的一拳，質量無限大！"},
         {"name": "黑洞視界", "req_lv": 50, "factor": "str", "mult": 6.0, "desc": "連光都無法逃脫的重力場！"}
     ],
-    # --- 📖 英文大師 (運氣流 - 爆擊與秒殺) ---
+    # --- 📖 英文大師 (運氣流) ---
     "英文大師": [
         {"name": "單字連發", "req_lv": 1, "factor": "luk", "mult": 1.2, "desc": "快速背誦 7000 單字造成精神傷害！"},
         {"name": "文法修正", "req_lv": 5, "factor": "luk", "mult": 1.5, "desc": "指出了對手的語病，造成爆擊！"},
         {"name": "克漏字填空", "req_lv": 10, "factor": "luk", "mult": 1.8, "desc": "精準猜中了答案！"},
-        {"name": "倒裝句法", "req_lv": 15, "factor": "luk", "mult": 2.2, "desc": "Never have I seen such power! (從未見過如此力量)"},
+        {"name": "倒裝句法", "req_lv": 15, "factor": "luk", "mult": 2.2, "desc": "Never have I seen such power!"},
         {"name": "作文滿分", "req_lv": 20, "factor": "luk", "mult": 2.6, "desc": "寫出了優美的文章，感動了上蒼！"},
         {"name": "GRE 紅寶書", "req_lv": 25, "factor": "luk", "mult": 3.0, "desc": "丟出厚重的單字書砸向對手！"},
         {"name": "莎士比亞十四行詩", "req_lv": 30, "factor": "luk", "mult": 3.5, "desc": "古典文學的靈魂衝擊！"},
         {"name": "經濟學人閱讀", "req_lv": 35, "factor": "luk", "mult": 4.0, "desc": "艱澀的長難句讓對手大腦當機！"},
-        # 💀 秒殺技能 (火山肺病)
-        {"name": "Pneumono...", "req_lv": 40, "factor": "luk", "mult": 1.0, "is_ohko": True, "desc": "唸出了世上最長的單字，試圖讓對手窒息！(機率秒殺)"},
+        {"name": "Pneumono...", "req_lv": 40, "factor": "luk", "mult": 1.0, "is_ohko": True, "desc": "唸出了世上最長的單字，試圖讓對手窒息！"},
         {"name": "韋氏大字典", "req_lv": 50, "factor": "luk", "mult": 6.0, "desc": "召喚整本字典的知識量壓垮對手！"}
     ],
-    # --- 💻 計概大師 (均衡流 - 穩定輸出) ---
+    # --- 💻 計概大師 (均衡流) ---
     "計概大師": [
         {"name": "Hello World", "req_lv": 1, "factor": "int", "mult": 1.2, "desc": "輸出了標準攻擊！"},
         {"name": "二進位打擊", "req_lv": 5, "factor": "str", "mult": 1.5, "desc": "用 0 和 1 瘋狂攻擊！"},
@@ -88,45 +85,26 @@ class Fun(commands.Cog):
         except: return None
 
     def calculate_hp(self, level, vit):
-        """計算血量: 基礎500 + 等級*50 + 體力*20"""
         return 500 + (level * 50) + (vit * 20)
 
     def calculate_damage(self, skill, stats):
-        """計算傷害 (含隨機浮動與秒殺機制)"""
-        
-        # 💀 1. 處理秒殺技能 (英文大師專屬)
         if skill.get("is_ohko"):
-            # 秒殺機率 = LUK * 0.2% (例如 100 LUK = 20% 機率)
-            # 基礎機率 5%，最高 30%
             chance = min(5 + (stats['luk'] * 0.2), 30)
-            if random.uniform(0, 100) < chance:
-                return 999999, True # 秒殺視為超級暴擊
-            else:
-                return 10, False # 失敗只有 10 點傷害 (唸錯單字咬到舌頭)
+            if random.uniform(0, 100) < chance: return 999999, True
+            else: return 10, False
 
-        # 2. 基礎傷害
         factor = skill['factor']
         base_dmg = stats.get(factor, 5) * 3 
-        
-        # 3. 技能倍率
         raw_dmg = base_dmg * skill['mult']
         
-        # 4. 隨機浮動 (越高等的招式，下限越高)
-        # Lv.20 以上的招式 (mult > 2.5) -> 0.95 ~ 1.3 (穩定高傷)
-        # 低等招式 -> 0.8 ~ 1.2 (浮動大)
-        if skill['mult'] >= 2.5:
-            variance = random.uniform(0.95, 1.3)
-        else:
-            variance = random.uniform(0.8, 1.2)
+        if skill['mult'] >= 2.5: variance = random.uniform(0.95, 1.3)
+        else: variance = random.uniform(0.8, 1.2)
             
         final_dmg = raw_dmg * variance
         
-        # 5. 暴擊判定 (看 LUK)
-        crit_rate = min(stats['luk'] * 0.5, 50) # 最高 50%
+        crit_rate = min(stats['luk'] * 0.5, 50)
         is_crit = random.uniform(0, 100) < crit_rate
-        
-        if is_crit:
-            final_dmg *= 1.5
+        if is_crit: final_dmg *= 1.5
             
         return int(final_dmg), is_crit
 
@@ -152,7 +130,6 @@ class Fun(commands.Cog):
         if not p1_data: return await interaction.response.send_message("❌ 你還沒註冊！請輸入 `/rpg註冊`", ephemeral=True)
         if not p2_data: return await interaction.response.send_message(f"❌ **{opponent.display_name}** 還沒註冊！", ephemeral=True)
 
-        # 初始化數值
         p1_name, p2_name = p1_data['name'], p2_data['name']
         p1_job, p2_job = p1_data['job'], p2_data['job']
         
@@ -160,12 +137,8 @@ class Fun(commands.Cog):
         p2_hp = self.calculate_hp(p2_data['level'], p2_data['stats']['vit'])
         p1_max, p2_max = p1_hp, p2_hp
 
-        # 篩選可用技能 (只拿等級夠的)
-        # 如果職業名稱比對不到 (例如改過名)，就用初心者技能當備案
         p1_skills = [s for s in SKILL_DB.get(p1_job, SKILL_DB["🥚 初心考生"]) if s['req_lv'] <= p1_data['level']]
         p2_skills = [s for s in SKILL_DB.get(p2_job, SKILL_DB["🥚 初心考生"]) if s['req_lv'] <= p2_data['level']]
-        
-        # 防止有人 50 等但技能庫沒讀到東西 (防呆)
         if not p1_skills: p1_skills = SKILL_DB["🥚 初心考生"]
         if not p2_skills: p2_skills = SKILL_DB["🥚 初心考生"]
 
@@ -183,22 +156,18 @@ class Fun(commands.Cog):
             atk_data = p1_data if is_p1_turn else p2_data
             atk_skills = p1_skills if is_p1_turn else p2_skills
             
-            # 隨機出招 (高等級招式權重可以高一點，但這裡先隨機)
             skill = random.choice(atk_skills)
             dmg, is_crit = self.calculate_damage(skill, atk_data['stats'])
             
             if is_p1_turn: p2_hp -= dmg
             else: p1_hp -= dmg
                 
-            # 特效文字
             crit_str = " **(⚡致命一擊!)**" if is_crit and dmg < 900000 else ""
-            if dmg > 900000: crit_str = " **(💀 一擊必殺!)**" # 秒殺特效
+            if dmg > 900000: crit_str = " **(💀 一擊必殺!)**"
             
-            # 顯示技能描述
             line = f"{'🔴' if is_p1_turn else '🔵'} **{atk_name}** 使用了 **【{skill['name']}】**！\n   ↳ {skill['desc']} 造成 **{dmg}** 點傷害{crit_str}"
             log.append(line)
             
-            # 介面更新
             display_log = "\n\n".join(log[-5:])
             embed = discord.Embed(title=f"⚔️ 回合 {turn}", description=display_log, color=0xffa500)
             
@@ -217,7 +186,6 @@ class Fun(commands.Cog):
         winner_id = interaction.user.id if p1_hp > 0 else opponent.id
         loser_name = p2_name if p1_hp > 0 else p1_name
         
-        # 獎勵結算
         rpg = self.bot.get_cog("RPG")
         bonus = ""
         if rpg:
@@ -225,8 +193,12 @@ class Fun(commands.Cog):
             bonus = f"\n🏆 獲得 **30 EXP**！"
             if is_lv: bonus += f"\n🎉 **升級了！Lv.{new_lv}**"
 
+        # 🔥 修正處：這裡把最後的戰鬥過程跟結果合併了！
+        final_log = "\n\n".join(log[-5:]) # 抓最後 5 行
+        
         end_embed = discord.Embed(title="🏆 決鬥結束！", color=0xffd700)
-        end_embed.description = f"**{winner}** 擊敗了 **{loser_name}**！{bonus}"
+        end_embed.description = f"{final_log}\n\n━━━━━━━━━━━━━━\n**{winner}** 擊敗了 **{loser_name}**！{bonus}"
+        
         await msg.edit(embed=end_embed)
 
 async def setup(bot):
