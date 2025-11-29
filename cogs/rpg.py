@@ -85,20 +85,20 @@ class RPG(commands.Cog):
     @app_commands.command(name="rpg註冊", description="建立檔案")
     async def register(self, interaction: discord.Interaction):
         uid = str(interaction.user.id)
-        if uid in self.users: return await interaction.response.send_message("已註冊！", ephemeral=True)
+        if uid in self.users: return await interaction.response.send_message("已註冊！", ephemeral=False)
         self.users[uid] = {
             "name": interaction.user.display_name, "job": "🥚 初心考生", "level": 1, "exp": 0,
             "stats": {"str": 5, "int": 5, "vit": 5, "luk": 5},
             "last_sign": "", "streak": 0, "last_action_date": "", "today_study_hours": 0, "today_question_done": False
         }
         self.save_data()
-        await interaction.response.send_message(f"✅ 註冊成功！", ephemeral=True)
+        await interaction.response.send_message(f"✅ 註冊成功！", ephemeral=False)
         await self.send_log(interaction, "🆕 註冊了考生檔案")
 
     @app_commands.command(name="rpg狀態", description="查看狀態")
     async def status(self, interaction: discord.Interaction):
         uid = str(interaction.user.id)
-        if uid not in self.users: return await interaction.response.send_message("請先 `/rpg註冊`。", ephemeral=True)
+        if uid not in self.users: return await interaction.response.send_message("請先 `/rpg註冊`。", ephemeral=False)
         self.check_daily_reset(uid)
         u = self.users[uid]
         lvl = u['level']
@@ -137,46 +137,46 @@ class RPG(commands.Cog):
     @app_commands.command(name="簽到", description="每日簽到")
     async def sign_in(self, interaction: discord.Interaction):
         uid = str(interaction.user.id)
-        if uid not in self.users: return await interaction.response.send_message("未註冊", ephemeral=True)
+        if uid not in self.users: return await interaction.response.send_message("未註冊", ephemeral=False)
         today = datetime.datetime.now().strftime("%Y-%m-%d")
         yesterday = (datetime.datetime.now()-datetime.timedelta(days=1)).strftime("%Y-%m-%d")
         u = self.users[uid]
-        if u.get("last_sign") == today: return await interaction.response.send_message("已簽到", ephemeral=True)
+        if u.get("last_sign") == today: return await interaction.response.send_message("已簽到", ephemeral=False)
         if u.get("last_sign") == yesterday: u["streak"] += 1
         else: u["streak"] = 1
         exp = 50 + min(u["streak"], 10)*5
         u["last_sign"] = today
         is_lv, res = self.add_exp(uid, exp)
         msg = f"📅 簽到成功！獲得 {exp} EXP！{'(升級!)' if is_lv else ''}"
-        await interaction.response.send_message(msg, ephemeral=True)
+        await interaction.response.send_message(msg, ephemeral=False)
         await self.send_log(interaction, f"📅 完成簽到 (連續 {u['streak']} 天) (+{exp} EXP)")
 
     @app_commands.command(name="讀書", description="回報時數")
     async def study_report(self, interaction: discord.Interaction, hours: float):
         uid = str(interaction.user.id)
-        if uid not in self.users: return await interaction.response.send_message("未註冊", ephemeral=True)
+        if uid not in self.users: return await interaction.response.send_message("未註冊", ephemeral=False)
         self.check_daily_reset(uid)
         u = self.users[uid]
-        if hours <= 0: return await interaction.response.send_message("時間錯誤", ephemeral=True)
+        if hours <= 0: return await interaction.response.send_message("時間錯誤", ephemeral=False)
         rem = 10 - u.get("today_study_hours", 0)
-        if rem <= 0: return await interaction.response.send_message("今日已滿 10 小時", ephemeral=True)
+        if rem <= 0: return await interaction.response.send_message("今日已滿 10 小時", ephemeral=False)
         act = min(hours, rem)
         exp = int(act * 20)
         u["today_study_hours"] += act
         is_lv, res = self.add_exp(uid, exp)
         msg = f"⏱️ 紀錄 {act} 小時，獲得 {exp} EXP！{'(升級!)' if is_lv else ''}"
-        await interaction.response.send_message(msg, ephemeral=True)
+        await interaction.response.send_message(msg, ephemeral=False)
         await self.send_log(interaction, f"📚 回報讀書 **{act}** 小時 (+{exp} EXP)\n今日累計：{u['today_study_hours']} hr")
 
     @app_commands.command(name="rpg轉職", description="Lv.5 轉職")
     async def change_job(self, interaction: discord.Interaction):
         uid = str(interaction.user.id)
         if uid not in self.users: 
-            return await interaction.response.send_message("❌ 請先 `/rpg註冊`。", ephemeral=True)
+            return await interaction.response.send_message("❌ 請先 `/rpg註冊`。", ephemeral=False)
         
         u = self.users[uid]
         if u['level'] < 5:
-            return await interaction.response.send_message(f"⚠️ 等級不足！你需要 **Lv.5** 才能轉職 (目前 Lv.{u['level']})。", ephemeral=True)
+            return await interaction.response.send_message(f"⚠️ 等級不足！你需要 **Lv.5** 才能轉職 (目前 Lv.{u['level']})。", ephemeral=False)
         
         if u['job'] != "🥚 初心考生":
             return await interaction.response.send_message("你已經轉職過了！無法更換職業。", ephemeral=True)
