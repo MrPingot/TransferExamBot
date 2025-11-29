@@ -83,7 +83,7 @@ class Fun(commands.Cog):
         return self.bot.get_cog("RPG")
 
     def calculate_hp(self, level, vit):
-        return 500 + (level * 50) + (vit * 20)
+        return 150 + (level * 50) + (vit * 20)
 
     def calculate_damage(self, skill, stats):
         if skill.get("is_ohko"):
