@@ -1,0 +1,502 @@
+[
+  {
+    "quote": "古之立大事者，不惟有超世之才，亦必有堅忍不拔之志。",
+    "author": "蘇軾"
+  },
+  {
+    "quote": "長風破浪會有時，直掛雲帆濟滄海。",
+    "author": "李白"
+  },
+  {
+    "quote": "寶劍鋒從磨礪出，梅花香自苦寒來。",
+    "author": "《警世賢文》"
+  },
+  {
+    "quote": "千磨萬擊還堅勁，任爾東西南北風。",
+    "author": "鄭板橋"
+  },
+  {
+    "quote": "不經一番寒徹骨，怎得梅花撲鼻香。",
+    "author": "黃櫱禪師"
+  },
+  {
+    "quote": "路漫漫其修遠兮，吾將上下而求索。",
+    "author": "屈原"
+  },
+  {
+    "quote": "天生我材必有用，千金散盡還復來。",
+    "author": "李白"
+  },
+  {
+    "quote": "鍥而舍之，朽木不折；鍥而不舍，金石可鏤。",
+    "author": "荀子"
+  },
+  {
+    "quote": "會當凌絕頂，一覽眾山小。",
+    "author": "杜甫"
+  },
+  {
+    "quote": "博學而篤志，切問而近思，仁在其中矣。",
+    "author": "論語"
+  },
+  {
+    "quote": "昨夜西風凋碧樹，獨上高樓，望盡天涯路。",
+    "author": "晏殊 (王國維引喻治學第一境界)"
+  },
+  {
+    "quote": "衣帶漸寬終不悔，為伊消得人憔悴。",
+    "author": "柳永 (王國維引喻治學第二境界)"
+  },
+  {
+    "quote": "眾里尋他千百度，驀然回首，那人卻在，燈火闌珊處。",
+    "author": "辛棄疾 (王國維引喻治學第三境界)"
+  },
+  {
+    "quote": "有志者，事竟成，破釜沉舟，百二秦關終屬楚。",
+    "author": "蒲松齡"
+  },
+  {
+    "quote": "苦心人，天不負，臥薪嘗膽，三千越甲可吞吳。",
+    "author": "蒲松齡"
+  },
+  {
+    "quote": "少壯不努力，老大徒傷悲。",
+    "author": "漢樂府《長歌行》"
+  },
+  {
+    "quote": "業精於勤，荒於嬉；行成於思，毀於隨。",
+    "author": "韓愈"
+  },
+  {
+    "quote": "山重水複疑無路，柳暗花明又一村。",
+    "author": "陸游"
+  },
+  {
+    "quote": "大鵬一日同風起，扶搖直上九萬里。",
+    "author": "李白"
+  },
+  {
+    "quote": "If I have seen further, it is by standing on the shoulders of giants.(如果我看得比別人遠，那是因為我站在巨人的肩膀上。)",
+    "author": "Isaac Newton (牛頓)"
+  },
+  {
+    "quote": "Genius is one percent inspiration and ninety-nine percent perspiration.(天才是百分之一的靈感，加上百分之九十九的汗水。)",
+    "author": "Thomas Edison (愛迪生)"
+  },
+  {
+    "quote": "In the middle of difficulty lies opportunity.(在困難的中心，蘊藏著機會。)",
+    "author": "Albert Einstein (愛因斯坦)"
+  },
+  {
+    "quote": "It always seems impossible until it’s done.(在事情完成之前，它看起來總是不可能的。)",
+    "author": "Nelson Mandela (曼德拉)"
+  },
+  {
+    "quote": "Success is going from failure to failure without losing your enthusiasm.(成功就是經歷一次又一次的失敗，卻不失掉熱情。)",
+    "author": "Winston Churchill (邱吉爾)"
+  },
+  {
+    "quote": "I think, therefore I am.(我思，故我在。)",
+    "author": "René Descartes (笛卡兒)"
+  },
+  {
+    "quote": "Energy and persistence conquer all things.(能量和堅持可以征服一切。)",
+    "author": "Benjamin Franklin (富蘭克林)"
+  },
+  {
+    "quote": "Believe you can and you're halfway there.(相信你自己能做得到，你就已經完成一半了。)",
+    "author": "Theodore Roosevelt (羅斯福)"
+  },
+  {
+    "quote": "The only way to do great work is to love what you do.(成就偉大事業的唯一途徑，就是熱愛你所做的事。)",
+    "author": "Steve Jobs (賈伯斯)"
+  },
+  {
+    "quote": "Stay hungry, stay foolish.(求知若飢，虛心若愚。)",
+    "author": "Steve Jobs (賈伯斯)"
+  },
+  {
+    "quote": "What doesn't kill you makes you stronger.(那些殺不死你的，終將使你更強大。)",
+    "author": "Friedrich Nietzsche (尼采)"
+  },
+  {
+    "quote": "He who has a why to live can bear almost any how.(一個人若知道自己「為什麼」而活，就可以忍受任何「如何」生存的痛苦。)",
+    "author": "Friedrich Nietzsche (尼采)"
+  },
+  {
+    "quote": "Knowledge is power.(知識就是力量。)",
+    "author": "Francis Bacon (培根)"
+  },
+  {
+    "quote": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.(我們重複做什麼，就會成為什麼樣的人。所以卓越不是一種行為，而是一種習慣。)",
+    "author": "Aristotle (亞里斯多德)"
+  },
+  {
+    "quote": "Fortune favors the bold.(幸運眷顧勇敢的人。)",
+    "author": "Virgil (維吉爾)"
+  },
+  {
+    "quote": "Don't count the days, make the days count.(別只是數日子，要讓每一天都有意義。)",
+    "author": "Muhammad Ali (拳王阿里)"
+  },
+  {
+    "quote": "Pain is temporary. Quitting lasts forever.(痛苦是暫時的，放棄是永遠的。)",
+    "author": "Lance Armstrong (蘭斯·阿姆斯壯)"
+  },
+  {
+    "quote": "Nature and Nature's laws lay hid in night: God said, Let Newton be! and all was light.(自然與自然的法則隱藏在黑夜中；上帝說，讓牛頓降生吧！於是一切都光明了。)",
+    "author": "Alexander Pope (獻給物理系學生)"
+  },
+  {
+    "quote": "乾坤未定，你我皆是黑馬。",
+    "author": "佚名"
+  },
+  {
+    "quote": "現在的努力，是為了之後有更多選擇的權利。",
+    "author": "佚名"
+  },
+  {
+    "quote": "不要假裝很努力，因為結果不會陪你演戲。",
+    "author": "佚名"
+  },
+  {
+    "quote": "這條路或許孤獨，但盡頭是繁花盛開。",
+    "author": "佚名"
+  },
+  {
+    "quote": "撐得住，世界就是你的。",
+    "author": "佚名"
+  },
+  {
+    "quote": "今天的淚水，會灌溉出明日的輝煌。",
+    "author": "佚名"
+  },
+  {
+    "quote": "不要在該奮鬥的年紀選擇安逸。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你想要的未來，只能靠現在的自己去拚。",
+    "author": "佚名"
+  },
+  {
+    "quote": "放棄很容易，但堅持一定很酷。",
+    "author": "佚名"
+  },
+  {
+    "quote": "將來的你，一定會感謝現在拚命的自己。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你的對手在看書，你的敵人在磨刀，隔壁老王在練腰，你還在幹嘛？",
+    "author": "佚名"
+  },
+  {
+    "quote": "哪有什麼一夜成名，其實都是百鍊成鋼。",
+    "author": "佚名"
+  },
+  {
+    "quote": "與其羨慕別人的位置，不如努力達成自己的目標。",
+    "author": "佚名"
+  },
+  {
+    "quote": "學習時的苦痛是暫時的，未學到的痛苦是終生的。",
+    "author": "哈佛圖書館牆上的訓言(傳)"
+  },
+  {
+    "quote": "當你想要放棄的那一刻，想想當初為什麼堅持走到了這裡。",
+    "author": "佚名"
+  },
+  {
+    "quote": "所謂的光輝歲月，並不是以後閃耀的日子，而是無人問津時，你對夢想的偏執。",
+    "author": "佚名"
+  },
+  {
+    "quote": "耐得住寂寞，才守得住繁華。",
+    "author": "佚名"
+  },
+  {
+    "quote": "別讓你的夢想，只停留在夢裡。",
+    "author": "佚名"
+  },
+  {
+    "quote": "努力不一定會成功，但不努力一定很輕鬆，可你甘心嗎？",
+    "author": "佚名"
+  },
+  {
+    "quote": "種一棵樹最好的時間是十年前，其次是現在。",
+    "author": "佚名"
+  },
+  {
+    "quote": "現在偷的懶，都是未來要還的債。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你必須非常努力，才能看起來毫不費力。",
+    "author": "佚名"
+  },
+  {
+    "quote": "半山腰太擠了，你得去山頂看看。",
+    "author": "佚名"
+  },
+  {
+    "quote": "寧願跑起來被拌倒無數次，也不願規規矩矩走一輩子。",
+    "author": "佚名"
+  },
+  {
+    "quote": "所有看起來的幸運，都源自於你不為人知的努力。",
+    "author": "佚名"
+  },
+  {
+    "quote": "不想認命，就去拚命。",
+    "author": "佚名"
+  },
+  {
+    "quote": "沒有傘的孩子，必須努力奔跑。",
+    "author": "佚名"
+  },
+  {
+    "quote": "如果結果不如你所願，就在塵埃落定前奮力一搏。",
+    "author": "夏目友人帳"
+  },
+  {
+    "quote": "人生沒有白走的路，每一步都算數。",
+    "author": "李宗盛"
+  },
+  {
+    "quote": "我們或許無法選擇出身，但我們可以選擇要成為怎樣的人。",
+    "author": "佚名"
+  },
+  {
+    "quote": "只有極致的自律，才能給你帶來極致的自由。",
+    "author": "佚名"
+  },
+  {
+    "quote": "別用淚水博取同情，要用汗水贏得掌聲。",
+    "author": "佚名"
+  },
+  {
+    "quote": "可以哭，可以累，但不可以放棄。",
+    "author": "佚名"
+  },
+  {
+    "quote": "把你的臉迎向陽光，那就不會有陰影。",
+    "author": "海倫·凱勒"
+  },
+  {
+    "quote": "既然選擇了遠方，便只顧風雨兼程。",
+    "author": "汪國真"
+  },
+  {
+    "quote": "真正的強者，不是沒有眼淚的人，而是含著眼淚奔跑的人。",
+    "author": "佚名"
+  },
+  {
+    "quote": "請再悄悄地努力一下，為了你想見的人，想做的事，想成為的自己。",
+    "author": "佚名"
+  },
+  {
+    "quote": "這世上只有一種失敗，那就是半途而廢。",
+    "author": "佚名"
+  },
+  {
+    "quote": "放棄的話，比賽就結束了喔。",
+    "author": "安西教練 (灌籃高手)"
+  },
+  {
+    "quote": "才能是可以栽培開花的，靈感是可以研磨雕琢的。",
+    "author": "及川徹 (排球少年!!)"
+  },
+  {
+    "quote": "所謂的弱小，就是意味著還有成長的空間。",
+    "author": "殺老師 (暗殺教室)"
+  },
+  {
+    "quote": "不相信自己的人，連努力的價值都沒有。",
+    "author": "凱 (火影忍者)"
+  },
+  {
+    "quote": "無論多麼痛苦，無論多麼難過，都要挺直腰桿活下去。",
+    "author": "煉獄杏壽郎 (鬼滅之刃)"
+  },
+  {
+    "quote": "如果因為害怕失敗就什麼都不做，那樣更不行。",
+    "author": "日向翔陽 (排球少年!!)"
+  },
+  {
+    "quote": "人沒有犧牲就什麼都得不到，為了得到什麼東西，就需要付出同等的代價。",
+    "author": "鋼之鍊金術師"
+  },
+  {
+    "quote": "即使是在絕望之中，也蘊含著希望。",
+    "author": "進擊的巨人"
+  },
+  {
+    "quote": "我不是天生的王者，但我骨子裡流著不服輸的血液。",
+    "author": "海賊王 (蒙其·D·魯夫)"
+  },
+  {
+    "quote": "奇蹟不是免費的，如果你祈求了希望，也會散播出同等的絕望。",
+    "author": "魔法少女小圓"
+  },
+  {
+    "quote": "就算沒有天賦，只要努力，也是可以超越天才的。",
+    "author": "洛克·李 (火影忍者)"
+  },
+  {
+    "quote": "已經無法回頭了，所以只能繼續前進。",
+    "author": "黑執事"
+  },
+  {
+    "quote": "如果手中沒有劍，我就無法保護妳；如果我手中握著劍，我就無法抱緊妳。",
+    "author": "死神 BLEACH"
+  },
+  {
+    "quote": "你駐足不前時，時間可不會等你。",
+    "author": "紫羅蘭永恆花園"
+  },
+  {
+    "quote": "我不想因為沒有嘗試過而後悔。",
+    "author": "刀劍神域 (亞絲娜)"
+  },
+  {
+    "quote": "只要不放棄，就一定能到達目標。",
+    "author": "妖精的尾巴 (納茲)"
+  },
+  {
+    "quote": "逆風的方向，更適合飛翔，我不怕千萬人阻擋，只怕自己投降。",
+    "author": "五月天《倔強》"
+  },
+  {
+    "quote": "我知道我的未來不是夢，我認真的過每一分鐘。",
+    "author": "張雨生《我的未來不是夢》"
+  },
+  {
+    "quote": "命運它無法讓我們跪地求饒，就算鮮血灑滿了懷抱。",
+    "author": "GALA樂隊《追夢赤子心》"
+  },
+  {
+    "quote": "我要一步一步往上爬，等待陽光靜靜看著它的臉。",
+    "author": "周杰倫《蝸牛》"
+  },
+  {
+    "quote": "最初的夢想緊握在手上，最想要去的地方，怎麼能在半路就返航。",
+    "author": "范瑋琪《最初的夢想》"
+  },
+  {
+    "quote": "不曾經歷過風雨，怎能見彩虹？",
+    "author": "佚名"
+  },
+  {
+    "quote": "專注於當下，做好手中的每一道題，未來的你自會給你答案。",
+    "author": "佚名"
+  },
+  {
+    "quote": "不要讓未來的你，討厭現在不努力的自己。",
+    "author": "佚名"
+  },
+  {
+    "quote": "那些殺不死你的，終將使你更強大。",
+    "author": "尼采"
+  },
+  {
+    "quote": "每一個優秀的人，都有一段沉默的時光。那段時光，是付出了很多努力，忍受孤獨和寂寞，不抱怨不訴苦，只有自己知道的日子。",
+    "author": "佚名"
+  },
+  {
+    "quote": "成功沒有快車道，幸福沒有高速路。所有的成功，都來自不倦的努力和奔跑。",
+    "author": "佚名"
+  },
+  {
+    "quote": "世界會向那些有目標和遠見的人讓路。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你日復一日的堅持，終將在某個時刻回報你。",
+    "author": "佚名"
+  },
+  {
+    "quote": "夢想是不會背叛你的，會背叛你的，只有你付出的努力還不夠。",
+    "author": "佚名"
+  },
+  {
+    "quote": "別低頭，皇冠會掉；別流淚，敵人會笑。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你所浪費的今天，是昨天死去的人奢望的明天。",
+    "author": "哈佛校訓(傳)"
+  },
+  {
+    "quote": "不要等待機會，而要創造機會。",
+    "author": "佚名"
+  },
+  {
+    "quote": "成功不是將來才有的，而是從決定去做的那一刻起，持續累積而成的。",
+    "author": "佚名"
+  },
+  {
+    "quote": "我們都在陰溝裡，但仍有人仰望星空。",
+    "author": "王爾德"
+  },
+  {
+    "quote": "與其在等待中枯萎，不如在行動中綻放。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你跑得慢沒關係，只要你不停下來。",
+    "author": "佚名"
+  },
+  {
+    "quote": "如果夢想有捷徑的話，那麼這條路的名字一定叫堅持。",
+    "author": "佚名"
+  },
+  {
+    "quote": "不要小看自己，因為人有無限的可能。",
+    "author": "佚名"
+  },
+  {
+    "quote": "去做你害怕做的事，去見你害怕見的人，這就是成長。",
+    "author": "佚名"
+  },
+  {
+    "quote": "每一次的跌倒，都是為了下一次更高傲的站起。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你若盛開，蝴蝶自來。",
+    "author": "佚名"
+  },
+  {
+    "quote": "星光不問趕路人，時光不負有心人。",
+    "author": "佚名"
+  },
+  {
+    "quote": "生活不是等待風暴過去，而是學會在雨中跳舞。",
+    "author": "佚名"
+  },
+  {
+    "quote": "你以為的極線，不過是別人的起點。",
+    "author": "佚名"
+  },
+  {
+    "quote": "現在不玩命，將來命玩你。",
+    "author": "佚名"
+  },
+  {
+    "quote": "努力到無能為力，拚搏到感動自己。",
+    "author": "佚名"
+  },
+  {
+    "quote": "為了看見更美的風景，我們必須不斷攀登。",
+    "author": "佚名"
+  },
+  {
+    "quote": "人妻殺手是同性戀。",
+    "author": "所有人都這樣想"
+  },
+  {
+    "quote": "《BanG Dream! 少女樂團派對》，簡稱《Garupa》（ガルパ），是由武士道開發並發行的音樂遊戲及視覺小說，屬《BanG Dream!》跨媒體製作企劃。在遊戲中，玩家可以單人或多人演奏歌曲，亦可閱讀樂隊和角色故事。遊戲支援iOS與Android平台，於2017年在日本發行；2021年，在Rocket Studio協助下，遊戲移植到任天堂Switch端。。",
+    "author": "Bang Dream 行銷團隊"
+  }
+]

@@ -1,0 +1,19 @@
+{
+    "1189944042671312959": {
+        "name": "yuumiuumi",
+        "job": "英文大師",
+        "level": 8,
+        "exp": 35,
+        "stats": {
+            "str": 12,
+            "int": 12,
+            "vit": 12,
+            "luk": 22
+        },
+        "last_sign": "2025-11-30",
+        "streak": 1,
+        "last_action_date": "",
+        "today_study_hours": 0,
+        "today_question_done": false
+    }
+}
