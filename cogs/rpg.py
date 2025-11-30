@@ -6,14 +6,12 @@ import os
 import datetime
 import settings
 from utils import get_days_remaining, EXAMS
-import role_utils
-
 # ==========================================
 # ⚡ 神之名單 (白名單)
 # ==========================================
 GOD_USERS = [
     1189944042671312959,  # 你自己 (原作者)
-    1104431853181620284, # 朋友 A (範例，請改成真的 ID)
+    1104431853181620284, # 朋友 A
 ]
 
 class RPG(commands.Cog):
@@ -44,25 +42,17 @@ class RPG(commands.Cog):
         leveled_up = False
         
         while user['exp'] >= req_exp:
-            if user['level'] >= 99:
-                user['exp'] = 0
-                break
+            if user['level'] >= 99: user['exp'] = 0; break
             user['exp'] -= req_exp
             user['level'] += 1
             leveled_up = True
             
             s = user['stats']; job = user['job']
-            if job == "微積分大師":
-                s['int'] += 4; s['vit'] += 1
-            elif job == "物理大師":
-                s['str'] += 4; s['vit'] += 1
-            elif job == "英文大師":
-                s['luk'] += 4; s['str'] += 1
-            elif job == "計概大師":
-                s['str'] += 2; s['int'] += 2; s['vit'] += 1
-            else:
-                s['str'] += 1; s['int'] += 1; s['vit'] += 1; s['luk'] += 1
-            
+            if job == "微積分大師": s['int']+=4; s['vit']+=1
+            elif job == "物理大師": s['str']+=4; s['vit']+=1
+            elif job == "英文大師": s['luk']+=4; s['str']+=1
+            elif job == "計概大師": s['str']+=2; s['int']+=2; s['vit']+=1
+            else: s['str']+=1; s['int']+=1; s['vit']+=1; s['luk']+=1
             req_exp = user['level'] * 15
             
         self.save_data()
@@ -77,6 +67,7 @@ class RPG(commands.Cog):
             user["today_question_done"] = False
             self.save_data()
 
+    # --- 內部工具：發送紀錄 (已修正 async 關鍵字) ---
     async def send_log(self, interaction, content):
         if settings.LOG_CHANNEL_ID:
             channel = self.bot.get_channel(settings.LOG_CHANNEL_ID)
@@ -94,16 +85,9 @@ class RPG(commands.Cog):
         uid = str(interaction.user.id)
         if uid in self.users: return await interaction.response.send_message("已註冊！", ephemeral=False)
         self.users[uid] = {
-            "name": interaction.user.display_name,
-            "job": "🥚 初心考生",
-            "level": 1,
-            "exp": 0,
+            "name": interaction.user.display_name, "job": "🥚 初心考生", "level": 1, "exp": 0,
             "stats": {"str": 5, "int": 5, "vit": 5, "luk": 5},
-            "last_sign": "",
-            "streak": 0,
-            "last_action_date": "",
-            "today_study_hours": 0,
-            "today_question_done": False
+            "last_sign": "", "streak": 0, "last_action_date": "", "today_study_hours": 0, "today_question_done": False
         }
         self.save_data()
         await role_utils.handle_job_change(interaction.guild, interaction.user, "🥚 初心考生")
@@ -115,8 +99,7 @@ class RPG(commands.Cog):
         uid = str(interaction.user.id)
         if uid not in self.users: return await interaction.response.send_message("請先 `/rpg註冊`。", ephemeral=True)
         self.check_daily_reset(uid)
-        u = self.users[uid]
-        lvl = u['level']
+        u = self.users[uid]; lvl = u['level']
         
         if lvl >= 99:
             req_exp = 999999
@@ -207,22 +190,21 @@ class RPG(commands.Cog):
         view = JobSelectView(self, uid)
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    # 😈 GM 指令 (神蹟特效版)
+    # 😈 GM 指令 (多人神權版)
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot: return
+        
         if message.content.startswith("!god!"):
-            if message.channel.id != 1002197714781601862: return
-            
-            # 驗證白名單
+            # 1. 檢查權限和頻道
             if message.author.id not in GOD_USERS: return
-
+            
             try:
                 args = message.content.split()
                 if len(args) < 3: return
                 cmd_type, val = args[1].lower(), args[2]
 
-                # --- 1. 神之發言 ---
+                # 2. 處理 Speak/Post 邏輯
                 if cmd_type == "speak":
                     if len(args) < 4: return
                     target_ch_id = int(args[2])
@@ -230,25 +212,21 @@ class RPG(commands.Cog):
                     target_ch = self.bot.get_channel(target_ch_id)
                     if target_ch:
                         await target_ch.send(content)
-                        # 回報
                         embed = discord.Embed(title="📢 神諭已傳達", description=f"已發送至 {target_ch.mention}", color=0xffd700)
-                        await message.channel.send(embed=embed, delete_after=5)
+                        await message.channel.send(embed=embed,)
                     else:
-                        await message.channel.send("❌ 找不到頻道", delete_after=5)
+                        await message.channel.send("❌ 找不到頻道",)
                     return
 
-                # --- 2. 強制發題 ---
                 if cmd_type == "post":
                     study_cog = self.bot.get_cog("Study")
                     cid = settings.DAILY_CAL_CHANNEL_ID if val == "cal" else settings.DAILY_PHY_CHANNEL_ID
                     if study_cog:
                         res = await study_cog.post_daily_task(val, cid)
-                        # 回報
-                        embed = discord.Embed(title="📜 神之試煉已開啟", description=f"結果：{res}", color=0xe74c3c)
-                        await message.channel.send(embed=embed, delete_after=5)
+                        await message.channel.send(f"🚀 {res}",)
                     return
 
-                # --- 3. 修改數值 ---
+                # 3. 處理數值修改
                 tid = str(message.mentions[0].id) if message.mentions else str(message.author.id)
                 tname = message.mentions[0].display_name if message.mentions else message.author.display_name
                 if tid not in self.users: return
@@ -262,7 +240,7 @@ class RPG(commands.Cog):
                 
                 self.save_data()
                 
-                # 🔥 神蹟顯現特效框 🔥
+                # 4. 回報結果 (神蹟特效)
                 cool_msg = (
                     f"⚡ **━━━ ⋆⋅☆⋅⋆ ━━━** ⚡\n"
                     f"✨ **【神旨降臨】** ✨\n"
@@ -270,10 +248,10 @@ class RPG(commands.Cog):
                     f"📜 修改：**{cmd_type}** ➜ **{val}**\n"
                     f"⚡ **━━━ ⋆⋅☆⋅⋆ ━━━** ⚡"
                 )
-                await message.channel.send(cool_msg, delete_after=5)
+                await message.channel.send(cool_msg, )
 
             except Exception as e:
-                await message.channel.send(f"❌ {e}", delete_after=5)
+                await message.channel.send(f"❌ {e}", )
 
 class JobSelectView(discord.ui.View):
     def __init__(self, rpg, uid): super().__init__(timeout=60); self.rpg=rpg; self.uid=uid
